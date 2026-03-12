@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Temporal Lag Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header" id="top">
+      <div class="header-inner">
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="gr">GR</button>
+        </div>
+        <div class="auth-buttons">
+          <!-- From Uiverse.io by satyamchaudharydev, adapted -->
+          <button type="button" class="auth-arrow-btn" data-auth="login">
+            <span>Login</span>
+            <span class="arrow-wrapper">
+              <span class="arrow"></span>
+            </span>
+          </button>
+          <button type="button" class="auth-arrow-btn" data-auth="signup">
+            <span>Sign Up</span>
+            <span class="arrow-wrapper">
+              <span class="arrow"></span>
+            </span>
+          </button>
+        </div>
+        <nav class="nav">
+          <div class="nav-btn-container">
+            <a href="#top" class="nav-btn">Home</a>
+          </div>
+          <div class="nav-btn-container">
+            <a href="#about" class="nav-btn">About</a>
+          </div>
+          <div class="nav-btn-container">
+            <a href="#upload" class="nav-btn">Upload File</a>
+          </div>
+          <div class="nav-btn-container">
+            <a href="#faq" class="nav-btn">FAQ</a>
+          </div>
+          <div class="nav-btn-container">
+            <a href="#contact" class="nav-btn">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="home">
+      <section class="hero">
+        <div class="hero-image-wrapper">
+          <img id="heroImage" src="pngs/img1.png" alt="Cognitive load visualization" />
+        </div>
+        <div class="hero-overlay">
+          <h1 class="hero-title">The Temporal Lag Project</h1>
+          <p class="hero-subtitle">
+            Eye–Finger Lag · XGBoost vs MLP · SHAP-based interpretability for cognitive load.
+          </p>
+        </div>
+        <div class="hero-dots">
+          <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+          <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+      </section>
+
+      <section class="upload-bar" id="upload">
+        <div class="upload-inner">
+          <!-- From Uiverse.io by omar49511 -->
+          <button class="container-btn-file" type="button">
+            <svg
+              fill="#fff"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 50 50"
+            >
+              <path
+                d="M28.8125 .03125L.8125 5.34375C.339844 
+              5.433594 0 5.863281 0 6.34375L0 43.65625C0 
+              44.136719 .339844 44.566406 .8125 44.65625L28.8125 
+              49.96875C28.875 49.980469 28.9375 50 29 50C29.230469 
+              50 29.445313 49.929688 29.625 49.78125C29.855469 49.589844 
+              30 49.296875 30 49L30 1C30 .703125 29.855469 .410156 29.625 
+              .21875C29.394531 .0273438 29.105469 -.0234375 28.8125 .03125ZM32 
+              6L32 13L34 13L34 15L32 15L32 20L34 20L34 22L32 22L32 27L34 27L34 
+              29L32 29L32 35L34 35L34 37L32 37L32 44L47 44C48.101563 44 49 
+              43.101563 49 42L49 8C49 6.898438 48.101563 6 47 6ZM36 13L44 
+              13L44 15L36 15ZM6.6875 15.6875L11.8125 15.6875L14.5 21.28125C14.710938 
+              21.722656 14.898438 22.265625 15.0625 22.875L15.09375 22.875C15.199219 
+              22.511719 15.402344 21.941406 15.6875 21.21875L18.65625 15.6875L23.34375 
+              15.6875L17.75 24.9375L23.5 34.375L18.53125 34.375L15.28125 
+              28.28125C15.160156 28.054688 15.035156 27.636719 14.90625 
+              27.03125L14.875 27.03125C14.8125 27.316406 14.664063 27.761719 
+              14.4375 28.34375L11.1875 34.375L6.1875 34.375L12.15625 25.03125ZM36 
+              20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
+              ></path>
+            </svg>
+            Upload File
+            <input
+              id="dataFile"
+              class="file"
+              name="file"
+              type="file"
+              accept=".csv,.xlsx,.xls"
+            />
+          </button>
+          <button id="runPipelineBtn" type="button">Run full pipeline</button>
+          <span id="runStatus" class="status-text"></span>
+          <!-- From Uiverse.io by Nawsome -->
+          <div id="uploadLoader" class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="resultsSection" class="hidden">
+      <section class="model-bar">
+        <div class="model-inner">
+          <label for="modelSelect">Model:</label>
+          <select id="modelSelect">
+            <option value="xgb">XGBoost</option>
+            <option value="mlp">MLP</option>
+          </select>
+        </div>
+        <div class="download-inner">
+          <a href="/metrics.json" class="btn-secondary" download>Download metrics.json</a>
+          <a href="/shap_summary.png" class="btn-secondary" download>Download SHAP summary</a>
+          <a
+            href="/shap_dependence_Lag.png"
+            class="btn-secondary"
+            download
+          >Download SHAP Lag</a>
+        </div>
+      </section>
+
+      <section class="cards">
+        <article class="card model-xgb" data-model="xgb">
+          <h2>XGBoost</h2>
+          <p class="metric-label" title="Accuracy: σωστό ποσοστό προβλέψεων στο test set.">
+            Accuracy
+          </p>
+          <p id="xgb-accuracy" class="metric-value">–</p>
+          <p class="metric-label" title="F1: ισορροπία ανάμεσα σε precision και recall για τη δύσκολη κλάση.">
+            F1-Score
+          </p>
+          <p id="xgb-f1" class="metric-value">–</p>
+        </article>
+
+        <article class="card model-mlp" data-model="mlp">
+          <h2>MLP</h2>
+          <p class="metric-label" title="Accuracy: σωστό ποσοστό προβλέψεων στο test set.">
+            Accuracy
+          </p>
+          <p id="mlp-accuracy" class="metric-value">–</p>
+          <p class="metric-label" title="F1: ισορροπία ανάμεσα σε precision και recall για τη δύσκολη κλάση.">
+            F1-Score
+          </p>
+          <p id="mlp-f1" class="metric-value">–</p>
+        </article>
+
+        <article class="card card-info" data-model="both">
+          <h2>Info</h2>
+          <ul>
+            <li>Backend: Python (XGBoost, MLP, SHAP)</li>
+            <li>Data: `data_clean.csv`</li>
+            <li>Target: Difficulty (High vs Low)</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid-2" id="about">
+        <article class="panel">
+          <h2>SHAP Summary (All Features)</h2>
+          <p class="panel-subtitle">
+            Δείχνει τη συνολική σημασία κάθε χαρακτηριστικού στο XGBoost.
+          </p>
+          <div class="image-wrapper">
+            <img src="/shap_summary.png" alt="SHAP Summary" />
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>SHAP vs Lag</h2>
+          <p class="panel-subtitle">
+            Όσο αυξάνεται το Lag, πώς αλλάζει η συμβολή του στην πρόβλεψη;
+          </p>
+          <div class="image-wrapper">
+            <img src="/shap_dependence_Lag.png" alt="SHAP Lag Dependence" />
+          </div>
+        </article>
+      </section>
+
+      <section class="grid-2" id="faq">
+        <article class="panel model-xgb" data-model="xgb">
+          <h2>Confusion Matrix – XGBoost</h2>
+          <table id="xgb-cm" class="cm-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Pred 0</th>
+                <th>Pred 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>True 0</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>True 1</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel model-mlp" data-model="mlp">
+          <h2>Confusion Matrix – MLP</h2>
+          <table id="mlp-cm" class="cm-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Pred 0</th>
+                <th>Pred 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>True 0</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>True 1</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="grid-2" id="contact">
+        <article class="panel model-xgb" data-model="xgb">
+          <h2>Class-wise Metrics – XGBoost</h2>
+          <p class="panel-subtitle">
+            Precision / Recall / F1 ανά κλάση (0 = εύκολη, 1 = δύσκολη λέξη).
+          </p>
+          <table id="xgb-class-metrics" class="cm-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel model-mlp" data-model="mlp">
+          <h2>Class-wise Metrics – MLP</h2>
+          <p class="panel-subtitle">
+            Precision / Recall / F1 ανά κλάση (0 = εύκολη, 1 = δύσκολη λέξη).
+          </p>
+          <table id="mlp-class-metrics" class="cm-table">
+            <thead>
+              <tr>
+                <th>Class</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="panel">
+          <h2>Lag Distribution</h2>
+          <p class="panel-subtitle">
+            Histogram της μεταβλητής Lag (διαφορά χρόνου eye–finger ή dt).
+          </p>
+          <canvas id="lagHistogram" height="120"></canvas>
+        </article>
+
+        <article class="panel">
+          <h2>Registered Users (debug)</h2>
+          <p class="panel-subtitle">
+            Simple view of users stored in the local SQLite database.
+          </p>
+          <table class="cm-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created at</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <!-- filled by JS -->
+            </tbody>
+          </table>
+        </article>
+      </section>
+      </div>
+    </main>
+
+    <!-- Auth modal -->
+    <div id="authModal" class="auth-modal hidden">
+      <div class="auth-modal-backdrop"></div>
+      <div class="auth-modal-dialog">
+        <!-- Signup form -->
+        <form class="auth-form" id="signupForm">
+          <p class="auth-title">Register</p>
+          <p class="auth-message">
+            Signup now and get full access to The Temporal Lag Project dashboard.
+          </p>
+          <div class="auth-flex">
+            <label>
+              <input required placeholder="" type="text" name="firstName" class="auth-input" />
+              <span>Firstname</span>
+            </label>
+
+            <label>
+              <input required placeholder="" type="text" name="lastName" class="auth-input" />
+              <span>Lastname</span>
+            </label>
+          </div>
+
+          <label>
+            <input required placeholder="" type="email" name="email" class="auth-input" />
+            <span>Email</span>
+          </label>
+
+          <label>
+            <input required placeholder="" type="password" name="password" class="auth-input" />
+            <span>Password</span>
+          </label>
+          <label>
+            <input required placeholder="" type="password" name="confirmPassword" class="auth-input" />
+            <span>Confirm password</span>
+          </label>
+          <button type="submit" class="auth-submit">Submit</button>
+          <p class="auth-signin">
+            Already have an account?
+            <button type="button" class="auth-link" data-switch="login">
+              Sign in
+            </button>
+          </p>
+        </form>
+
+        <!-- Login form -->
+        <form class="auth-form hidden" id="loginForm">
+          <p class="auth-title">Sign in</p>
+          <p class="auth-message">
+            Sign in to access your saved runs and settings.
+          </p>
+
+          <label>
+            <input required placeholder="" type="email" class="auth-input" />
+            <span>Email</span>
+          </label>
+
+          <label>
+            <input required placeholder="" type="password" class="auth-input" />
+            <span>Password</span>
+          </label>
+
+          <button type="submit" class="auth-submit">Login</button>
+          <p class="auth-signin">
+            Don’t have an account?
+            <button type="button" class="auth-link" data-switch="signup">
+              Sign up
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Backend scripts πρέπει να τρέξουν ΠΡΙΝ ανοίξεις το dashboard (evaluation → metrics.json).</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+  </body>
+  </html>
+

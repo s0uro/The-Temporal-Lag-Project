@@ -1,0 +1,18 @@
+# Καθαρισμός (delete ό,τι έχει χτιστεί)
+Remove-Item backend/data_clean.csv, backend/model_xgb.joblib, backend/model_mlp.joblib,
+backend/split_info.joblib, shap_summary.png,shap_dependence_Lag.png, metrics.json,
+lag_stats.json
+
+
+# ΝΕΟΣ ΤΡΟΠΟΣ: Flask API + Frontend
+# 1. Εγκατάσταση (μία φορά)
+#    pip install flask
+#
+# 2. Εκκίνηση server (τρέχει backend + frontend μαζί) στο port 5001
+#    cd C:\Users\giwrg\OneDrive\Desktop\test3
+#    python backend\api.py
+#
+# 3. Άνοιξε browser στο:
+#    http://127.0.0.1:5001/
+#
+# Από εκεί κάνεις upload το CSV/XLSX και τρέχει όλο το pipeline με ένα κουμπί.
