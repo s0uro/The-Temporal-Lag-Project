@@ -299,6 +299,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Mobile nav toggle
+  const nav = document.querySelector(".nav");
+  const navToggle = document.querySelector(".nav-toggle");
+  if (nav && navToggle) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+
   // Auth modal open/close (UI only)
   const authModal = document.getElementById("authModal");
   const signupForm = document.getElementById("signupForm");

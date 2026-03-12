@@ -28,6 +28,10 @@
             </span>
           </button>
         </div>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
         <nav class="nav">
           <div class="nav-btn-container">
             <a href="#top" class="nav-btn">Home</a>
@@ -201,52 +205,56 @@
       <section class="grid-2" id="faq">
         <article class="panel model-xgb" data-model="xgb">
           <h2>Confusion Matrix – XGBoost</h2>
-          <table id="xgb-cm" class="cm-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Pred 0</th>
-                <th>Pred 1</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>True 0</th>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>True 1</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table id="xgb-cm" class="cm-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Pred 0</th>
+                  <th>Pred 1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>True 0</th>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>True 1</th>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
 
         <article class="panel model-mlp" data-model="mlp">
           <h2>Confusion Matrix – MLP</h2>
-          <table id="mlp-cm" class="cm-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Pred 0</th>
-                <th>Pred 1</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>True 0</th>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>True 1</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table id="mlp-cm" class="cm-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Pred 0</th>
+                  <th>Pred 1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>True 0</th>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>True 1</th>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
       </section>
 
@@ -256,30 +264,32 @@
           <p class="panel-subtitle">
             Precision / Recall / F1 ανά κλάση (0 = εύκολη, 1 = δύσκολη λέξη).
           </p>
-          <table id="xgb-class-metrics" class="cm-table">
-            <thead>
-              <tr>
-                <th>Class</th>
-                <th>Precision</th>
-                <th>Recall</th>
-                <th>F1</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table id="xgb-class-metrics" class="cm-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>F1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
 
         <article class="panel model-mlp" data-model="mlp">
@@ -287,30 +297,32 @@
           <p class="panel-subtitle">
             Precision / Recall / F1 ανά κλάση (0 = εύκολη, 1 = δύσκολη λέξη).
           </p>
-          <table id="mlp-class-metrics" class="cm-table">
-            <thead>
-              <tr>
-                <th>Class</th>
-                <th>Precision</th>
-                <th>Recall</th>
-                <th>F1</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table id="mlp-class-metrics" class="cm-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>F1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
       </section>
 
@@ -328,19 +340,21 @@
           <p class="panel-subtitle">
             Simple view of users stored in the local SQLite database.
           </p>
-          <table class="cm-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Created at</th>
-              </tr>
-            </thead>
-            <tbody id="usersTableBody">
-              <!-- filled by JS -->
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="cm-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Created at</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- filled by JS -->
+              </tbody>
+            </table>
+          </div>
         </article>
       </section>
       </div>
