@@ -1020,11 +1020,19 @@ body {
 }
 
 @media (max-width: 640px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+  }
+
   .header-inner {
     padding: 8px 12px 10px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-auto-rows: auto;
+    align-items: center;
+    gap: 8px 10px;
   }
 
   .lang-switch,
@@ -1037,12 +1045,17 @@ body {
 
   .lang-switch {
     justify-content: flex-start;
+    grid-column: 1 / 2;
+    grid-row: 1;
   }
 
   .auth-buttons {
     gap: 6px;
     justify-content: flex-start;
     flex-wrap: nowrap;
+    grid-column: 2 / 3;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .auth-arrow-btn {
@@ -1053,7 +1066,11 @@ body {
 
   .nav-toggle {
     display: flex;
-    align-self: flex-end;
+    position: static;
+    transform: none;
+    grid-column: 1 / 3;
+    grid-row: 2;
+    justify-self: center;
   }
 
   .nav {
@@ -1063,8 +1080,9 @@ body {
     display: none;
     position: absolute;
     top: calc(100% + 8px);
-    left: 12px;
-    right: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(360px, calc(100vw - 24px));
     padding: 10px;
     background: rgba(11, 17, 32, 0.98);
     border: 1px solid rgba(148, 163, 184, 0.35);
