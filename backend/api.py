@@ -8,11 +8,13 @@ from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory  # pyright: ignore[reportMissingImports]
 
-import preprocessing
-import cross_correlation
-import training
-import evaluation
-import shap_explainability
+from backend import (
+    preprocessing,
+    cross_correlation,
+    training,
+    evaluation,
+    shap_explainability,
+)
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
