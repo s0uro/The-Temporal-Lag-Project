@@ -566,9 +566,35 @@ body {
   gap: 10px;
   background: radial-gradient(circle at top left, #020617 0, #020617 55%);
   border-radius: var(--radius-lg);
-  padding: 10px 14px;
+  padding: 12px 16px;
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow: var(--shadow-soft);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: 10px;
+}
+
+.upload-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.upload-help {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 #runPipelineBtn {
@@ -1107,6 +1133,7 @@ body {
 
   .hero {
     max-width: 100%;
+    margin-top: 6px;
   }
 
   .hero-overlay {
@@ -1124,6 +1151,7 @@ body {
   .upload-inner {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
 
   .container-btn-file,
