@@ -307,6 +307,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = nav.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
+
+    // Close dropdown when a nav link is tapped
+    nav.querySelectorAll("a[href^='#']").forEach((a) => {
+      a.addEventListener("click", () => {
+        if (nav.classList.contains("is-open")) {
+          nav.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
   }
 
   // Auth modal open/close (UI only)

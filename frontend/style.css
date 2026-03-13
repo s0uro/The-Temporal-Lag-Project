@@ -1033,11 +1033,22 @@ body {
     transform: none;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+  }
+
+  .lang-switch {
+    justify-content: flex-start;
   }
 
   .auth-buttons {
     gap: 6px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .auth-arrow-btn {
+    padding: 0.7em 1.05em;
+    font-size: 0.78rem;
+    border-radius: 999px;
   }
 
   .nav-toggle {
@@ -1050,6 +1061,16 @@ body {
     align-items: stretch;
     gap: 8px;
     display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 12px;
+    right: 12px;
+    padding: 10px;
+    background: rgba(11, 17, 32, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    z-index: 50;
   }
 
   .nav.is-open {
